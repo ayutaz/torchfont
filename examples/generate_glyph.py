@@ -154,7 +154,11 @@ def main() -> None:  # noqa: C901
 
     # Load checkpoint
     print(f"Loading checkpoint from {args.checkpoint}")
-    checkpoint = torch.load(args.checkpoint, map_location=args.device)
+    checkpoint = torch.load(
+        args.checkpoint,
+        map_location=args.device,
+        weights_only=False,
+    )
 
     # Get metadata from checkpoint
     content_classes = checkpoint.get("content_classes", [])
